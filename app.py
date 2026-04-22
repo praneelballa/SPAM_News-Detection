@@ -1,7 +1,6 @@
 import streamlit as st
 import joblib
 import re
-import matplotlib.pyplot as plt
 from fact_checking.fact_checker import FactChecker
 from fact_checking.decision_engine import final_decision
 
