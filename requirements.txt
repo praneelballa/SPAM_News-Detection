@@ -4,3 +4,4 @@ joblib
 sentence-transformers
 torch
 numpy
+matplotlib
