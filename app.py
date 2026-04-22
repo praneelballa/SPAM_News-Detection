@@ -66,17 +66,24 @@ if st.button("Analyze & Predict"):
         
         with col1:
             st.subheader("📊 ML Analysis")
-            ml_pred = result["ml_prediction"]
+            ml_pred = result.get("ml_prediction") # Use .get() to avoid KeyErrors
             
-            # Convert numeric to string first
+            # 1. Handle None or unexpected missing values
+            if ml_pred is None:
+                ml_pred = "unknown"
+
+            # 2. Convert numeric to string 
             if isinstance(ml_pred, int):
                 ml_pred = "real" if ml_pred == 1 else "fake"
             
-            # Use your specific string check
-            if ml_pred == "real":
-                st.success(f"ML Classification: {ml_pred.upper()}")
+            # 3. Ensure it's a string before calling .upper()
+            ml_pred_str = str(ml_pred)
+
+            # 4. Use your specific string check
+            if ml_pred_str == "real":
+                st.success(f"ML Classification: {ml_pred_str.upper()}")
             else:
-                st.error(f"ML Classification: {ml_pred.upper()}")
+                st.error(f"ML Classification: {ml_pred_str.upper()}")
             
             fig = plot_explanation(vec, model, vectorizer)
             st.pyplot(fig)
