@@ -3,7 +3,7 @@ A machine learning-based web app that detects spam or fake text using NLP and re
 
 ## Features
 - Text classification (Spam / Not Spam)
-- Confidence score
+- compares to preloaded facts for authentic replys
 - Simple UI using Streamlit
 
 ## Tech Stack
